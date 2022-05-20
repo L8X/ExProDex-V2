@@ -1,8 +1,8 @@
 --[[
-    ███████╗██╗  ██╗██████╗ ██████╗  ██████╗ ██████╗ ███████╗██╗  ██╗    ██╗   ██╗██████╗ 
+    ███████╗██╗  ██╗██████╗ ██████╗  ██████╗ ██████╗ ███████╗██╗  ██╗    ██╗   ██╗██████╗
     ██╔════╝╚██╗██╔╝██╔══██╗██╔══██╗██╔═══██╗██╔══██╗██╔════╝╚██╗██╔╝    ██║   ██║╚════██╗
     █████╗   ╚███╔╝ ██████╔╝██████╔╝██║   ██║██║  ██║█████╗   ╚███╔╝     ██║   ██║ █████╔╝
-    ██╔══╝   ██╔██╗ ██╔═══╝ ██╔══██╗██║   ██║██║  ██║██╔══╝   ██╔██╗     ╚██╗ ██╔╝██╔═══╝ 
+    ██╔══╝   ██╔██╗ ██╔═══╝ ██╔══██╗██║   ██║██║  ██║██╔══╝   ██╔██╗     ╚██╗ ██╔╝██╔═══╝
     ███████╗██╔╝ ██╗██║     ██║  ██║╚██████╔╝██████╔╝███████╗██╔╝ ██╗     ╚████╔╝ ███████╗
     ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝  ╚═╝ ╚═════╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝      ╚═══╝  ╚══════╝
 ]]--
@@ -47,7 +47,7 @@ if cclosure and hookfunction and getrenv then
             maxMem = mem
         end
     until scanned and minMem ~= 1e12 and maxMem ~= 0
-    
+
     coroutine.wrap(function()
         while task.wait() do
             currMem = currMem + math.random(1,12)
@@ -87,7 +87,7 @@ elseif hookfunction and getrenv then
             maxMem = mem
         end
     until scanned and minMem ~= 1e12 and maxMem ~= 0
-    
+
     coroutine.wrap(function()
         while task.wait() do
             currMem = currMem + math.random(1,12)
@@ -125,8 +125,8 @@ getgenv().EXPRODEX_LOADED = true
 
 local customasset
 
-pcall(function() 
-if getgenv then 
+pcall(function()
+if getgenv then
 customasset = getsynasset or getcustomasset
 getgenv().customasset = customasset
 else
@@ -221,95 +221,95 @@ getgenv().gethiddengui = gethiddengui
 task.spawn(function()
     pcall(function()
         if getconnections then
-            
+
             for i, v in next, getconnections(CoreGui.ChildAdded) do
                 v:Disable()
             end
-            
+
             for i, v in next, getconnections(CoreGui.ChildRemoved) do
                 v:Disable()
             end
-                               
+
             for i, v in next, getconnections(CoreGui.DescendantAdded) do
                 v:Disable()
             end
-                                
+
             for i, v in next, getconnections(CoreGui.DescendantRemoving) do
                 v:Disable()
             end
-            
+
             for i, v in next, getconnections(CoreGui.childAdded) do
                 v:Disable()
             end
-            
+
             for i, v in next, getconnections(CoreGui.Destroying) do
                 v:Disable()
             end
-            
+
             for i, v in next, getconnections(CoreGui.Changed) do
                 v:Disable()
             end
-            
+
             for i, v in next, getconnections(CoreGui.AncestryChanged) do
                 v:Disable()
             end
-            
+
             for i, v in next, getconnections(RobloxGui.DescendantAdded) do
                 v:Disable()
             end
-            
+
             for i, v in next, getconnections(RobloxGui.DescendantRemoving) do
                 v:Disable()
             end
-            
+
             for i, v in next, getconnections(RobloxGui.ChildAdded) do
                 v:Disable()
             end
-            
+
             for i, v in next, getconnections(RobloxGui.ChildRemoved) do
                 v:Disable()
             end
-            
+
             for i, v in next, getconnections(RobloxGui.Destroying) do
                 v:Disable()
             end
-            
+
             for i, v in next, getconnections(RobloxGui.Changed) do
                 v:Disable()
             end
-            
+
             for i, v in next, getconnections(RobloxGui.AncestryChanged) do
                 v:Disable()
             end
-            
+
             for i, v in next, getconnections(Folder.ChildAdded) do
                 v:Disable()
             end
-            
+
             for i, v in next, getconnections(Folder.ChildRemoved) do
                 v:Disable()
             end
-            
+
             for i, v in next, getconnections(Folder.DescendantAdded) do
                 v:Disable()
             end
-            
+
             for i, v in next, getconnections(Folder.DescendantRemoving) do
                 v:Disable()
             end
-            
+
             for i, v in next, getconnections(Folder.childAdded) do
                 v:Disable()
             end
-            
+
             for i, v in next, getconnections(Folder.Destroying) do
                 v:Disable()
             end
-            
+
             for i, v in next, getconnections(Folder.Changed) do
                 v:Disable()
             end
-           
+
             for i, v in next, getconnections(Folder.AncestryChanged) do
                 v:Disable()
             end
@@ -337,7 +337,7 @@ for i, v in pairs(game:GetChildren()) do
 		v:Disable()
         end
     end
-end          
+end
 for i, v in pairs(game:GetChildren()) do
     if v.Name == "Instance" and v.ClassName ~= "" and v.ClassName ~= " " then
     v.Name = v.ClassName
@@ -346,22 +346,22 @@ end
 end
 end)
 end)
-				
+
 local LogService = cloneref(game:GetService("LogService"))
 local ScriptContext = cloneref(game:GetService("ScriptContext"))
 
 task.spawn(function()
 pcall(function()
-if getconnections then	
+if getconnections then
 
 for i, v in next, getconnections(LogService.MessageOut) do
 v:Disable()
 end
-			
+
 for i, v in next, getconnections(ScriptContext.Error) do
 v:Disable()
 end
-		
+
 for i, v in next, getconnections(ScriptContext.ErrorDetailed) do
 v:Disable()
 end
@@ -407,7 +407,7 @@ writefile("418720155.png", tostring(img_418720155))
 end
 end)
 end)
-			
+
 local InsertService = cloneref(game:GetService("InsertService"))
 local ContentProv = cloneref(game:GetService("ContentProvider"))
 ContentProv:Preload("http://www.roblox.com/asset/?id=474172996")
@@ -2290,7 +2290,7 @@ task.spawn(function()
     createCopyWhatSetting("StarterPlayer")
     SaveMapName.Text = tostring(game.PlaceId) .. "MapCopy"
     SaveMapButton.MouseButton1Click:connect(function()
-                if identifyexecutor() == "ScriptWare" then 
+                if identifyexecutor() == "ScriptWare" then
                     return saveinstance()
                     end
         local copyWhat = {}
@@ -4545,27 +4545,27 @@ task.spawn(function()
         local extra = (sObj == RunningScriptsStorageMain and 'Refresh Instances' or nil)
         -- local extra2 = (sObj == nilStorageMain and 'Refresh Instances' or nil)
         currentRightClickMenu = CreateRightClickMenu({
-					'Cut', 
-					'Copy', 
-					'Paste Into', 
-					'Duplicate', 
-					'Delete', 
+					'Cut',
+					'Copy',
+					'Paste Into',
+					'Duplicate',
+					'Delete',
 					'Group',
-                                                      
-					'Ungroup', 
-					'Select Children', 
-					'Teleport To', 
+
+					'Ungroup',
+					'Select Children',
+					'Teleport To',
 					-- 'Track',
-					'Insert Part', 
-					'Insert Object', 
-					'View Script', 
-					'Save Script', 
-					--'Dump Function', 
-					'Save Instance', 
+					'Insert Part',
+					'Insert Object',
+					'View Script',
+					'Save Script',
+					--'Dump Function',
+					'Save Instance',
 					'Call Function',
 					'Call Remote',
 					-- 'Try Get Values',
-					extra 
+					extra
 					-- extra2
         }, "", false, function(option)
             if option == "Cut" then
@@ -6974,7 +6974,7 @@ task.spawn(function()
                 foundProps[nextObj.className] = true
                 for i, v in pairs(RbxApi.GetProperties(nextObj.className)) do
                     local suc, err = pcall(function()
-                        if -- not (PropertyIsHidden(v)) and 
+                        if -- not (PropertyIsHidden(v)) and
                         not checkForDupe(v, propHolder) then
                             if string.find(string.lower(v.Name), string.lower(propertiesSearch.Text)) or
                                 not searchingProperties() then
