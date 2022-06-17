@@ -1,3 +1,9 @@
+local genv = getfenv(0) or _G or shared
+
+local getgenv = getgenv or function()
+return genv
+end
+
 getgenv().notification = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/L8X/notificationstuff/main/src.lua", true))()
 
 local function notify(title, duration)
