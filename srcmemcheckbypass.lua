@@ -38,7 +38,7 @@ if cclosure and hookfunction and getrenv then
             maxMem = mem
         end
     until scanned and minMem ~= 1e12 and maxMem ~= 0
-    
+
     coroutine.wrap(function()
         while task.wait() do
             currMem = currMem + math.random(1,12)
@@ -78,7 +78,7 @@ elseif hookfunction and getrenv then
             maxMem = mem
         end
     until scanned and minMem ~= 1e12 and maxMem ~= 0
-    
+
     coroutine.wrap(function()
         while task.wait() do
             currMem = currMem + math.random(1,12)
