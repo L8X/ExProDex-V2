@@ -221,25 +221,6 @@ task.spawn(function()
     end)
 end)
 Folder.Parent = HideInMe
-
-task.spawn(function()
-pcall(function()
-if getconnections then
-for i, v in pairs(game:GetChildren()) do
-	if v.Name == "Instance" then
-		for i, v in next, getconnections(v:GetPropertyChangedSignal("Name")) do
-		v:Disable()
-        end
-    end
-end          
-for i, v in pairs(game:GetChildren()) do
-    if v.Name == "Instance" and v.ClassName ~= "" and v.ClassName ~= " " then
-    v.Name = v.ClassName
-    end
-end
-end
-end)
-end)
 				
 local LogService = cloneref(game:GetService("LogService"))
 local ScriptContext = cloneref(game:GetService("ScriptContext"))
@@ -247,10 +228,6 @@ local ScriptContext = cloneref(game:GetService("ScriptContext"))
 task.spawn(function()
 pcall(function()
 if getconnections then	
-
-for i, v in next, getconnections(LogService.MessageOut) do
-v:Disable()
-end
 			
 for i, v in next, getconnections(ScriptContext.Error) do
 v:Disable()
@@ -332,6 +309,43 @@ end
 local ScriptContext = cloneref(game:GetService("ScriptContext"))
 local LogService = cloneref(game:GetService("LogService"))
 local UIS = cloneref(game:GetService("UserInputService"))
+
+function dragGui(interfaceToDrag)
+    task.spawn(function()
+        local dragging
+        local dragInput
+        local dragStart
+        local startPos
+        local function update(input)
+            local delta = input.Position - dragStart
+            local Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+            interfaceToDrag.Position = Position
+        end
+        interfaceToDrag.InputBegan:Connect(function(input)
+            if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+                dragging = true
+                dragStart = input.Position
+                startPos = interfaceToDrag.Position
+                input.Changed:Connect(function()
+                    if input.UserInputState == Enum.UserInputState.End then
+                        dragging = false
+                    end
+                end)
+            end
+        end)
+        interfaceToDrag.InputChanged:Connect(function(input)
+            if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+                dragInput = input
+            end
+        end)
+        game:GetService("UserInputService").InputChanged:Connect(function(input)
+            if input == dragInput and dragging then
+                update(input)
+            end
+        end)
+    end)
+end
+
 CreateGui = function()
     local ROBLOX = cloneref(Instance.new("ScreenGui"))
     local PropertiesFrame = cloneref(Instance.new("Frame"))
@@ -842,7 +856,8 @@ CreateGui = function()
     SaveInstance.Active = true
     SaveInstance.BackgroundColor3 = Color3.fromRGB(43, 43, 43)
     SaveInstance.BorderColor3 = Color3.fromRGB(30, 30, 30)
-    SaveInstance.Draggable = true
+    --SaveInstance.Draggable = true
+    dragGui(SaveInstance)
     SaveInstance.Position = UDim2.new(0.3, 0, 0.3, 0)
     SaveInstance.Size = UDim2.new(0, 350, 0, 20)
     SaveInstance.Visible = false
@@ -947,7 +962,8 @@ CreateGui = function()
     Confirmation.Active = true
     Confirmation.BackgroundColor3 = Color3.fromRGB(43, 43, 43)
     Confirmation.BorderColor3 = Color3.fromRGB(30, 30, 30)
-    Confirmation.Draggable = true
+    --Confirmation.Draggable = true
+    dragGui(Confirmation)
     Confirmation.Position = UDim2.new(0.3, 0, 0.349, 0)
     Confirmation.Size = UDim2.new(0, 350, 0, 20)
     Confirmation.Visible = false
@@ -1010,7 +1026,8 @@ CreateGui = function()
     Caution.Active = true
     Caution.BackgroundColor3 = Color3.fromRGB(43, 43, 43)
     Caution.BorderColor3 = Color3.fromRGB(30, 30, 30)
-    Caution.Draggable = true
+    --Caution.Draggable = true
+    dragGui(Caution)
     Caution.Position = UDim2.new(0.3, 0, 0.3, 0)
     Caution.Size = UDim2.new(0, 350, 0, 20)
     Caution.Visible = false
@@ -1065,7 +1082,8 @@ CreateGui = function()
     CallRemote.Active = true
     CallRemote.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
     CallRemote.BorderColor3 = Color3.fromRGB(40, 40, 40)
-    CallRemote.Draggable = true
+    --CallRemote.Draggable = true
+    dragGui(CallRemote)
     CallRemote.Position = UDim2.new(0.3, 0, 0.3, 0)
     CallRemote.Size = UDim2.new(0, 350, 0, 20)
     CallRemote.Visible = false
@@ -1219,7 +1237,8 @@ CreateGui = function()
     TableCaution.Active = true
     TableCaution.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
     TableCaution.BorderColor3 = Color3.fromRGB(43, 43, 43)
-    TableCaution.Draggable = true
+    --TableCaution.Draggable = true
+    dragGui(TableCaution)
     TableCaution.Position = UDim2.new(0.3, 0, 0.3, 0)
     TableCaution.Size = UDim2.new(0, 350, 0, 20)
     TableCaution.Visible = false
@@ -1294,7 +1313,8 @@ CreateGui = function()
     ScriptEditor.Active = true
     ScriptEditor.BackgroundColor3 = Color3.fromRGB(43, 43, 43)
     ScriptEditor.BorderColor3 = Color3.fromRGB(30, 30, 30)
-    ScriptEditor.Draggable = true
+    --ScriptEditor.Draggable = true
+    dragGui(ScriptEditor)
     ScriptEditor.Position = UDim2.new(0.3, 0, 0.3, 0)
     ScriptEditor.Size = UDim2.new(0, 916, 0, 20)
     ScriptEditor.Visible = false
