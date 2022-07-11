@@ -48,7 +48,6 @@ return ref
 end
 getgenv().cloneref = cloneref
 end
-end
 
 local game = cloneref(game)
 local Game = cloneref(Game)
