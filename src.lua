@@ -69,7 +69,7 @@ local Players = cloneref(game:GetService("Players"))
 
 task.spawn(function()
 pcall(function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/L8X/gethiddengui/main/src.lua")()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/L8X/gethiddengui/main/src.lua"))()
 end)
 end)
 
