@@ -39,7 +39,15 @@ end
 end)
 
 local cloneref = cloneref or function(ref)
-    return ref
+return ref
+end
+
+if cloneref and identifyexecutor and identifyexecutor():find("Temple") then
+cloneref = function(ref)
+return ref
+end
+getgenv().cloneref = cloneref
+end
 end
 
 local game = cloneref(game)
