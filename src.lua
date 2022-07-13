@@ -73,6 +73,12 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/L8X/gethiddengui/main
 end)
 end)
 
+function nCreate()
+math.randomseed(tick())
+local randomNumbers = math.random(1e9, 2e9)
+return tostring(randomNumbers)
+end
+
 task.spawn(function()
 pcall(function()
 if cloneref and checkcaller and hookfunction and hookmetamethod and getnamecallmethod then
