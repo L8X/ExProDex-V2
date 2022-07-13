@@ -1849,8 +1849,8 @@ pcall(function()
     end
 end)
 pcall(function()
-    if protect_gui then
-       protect_gui(D_E_X)
+    if syn and syn.protect_gui then
+        syn.protect_gui(D_E_X)
     end
 end)
 local CoreGui2
@@ -1862,6 +1862,11 @@ if gethui then
 else
     CoreGui2 = cloneref(game:GetService("CoreGui"):WaitForChild("RobloxGui"))
 end
+end
+if sethiddenproperty then
+pcall(function()
+sethiddenproperty(D_E_X, "OnTopOfCoreBlur", false)
+end)
 end
 D_E_X.Parent = cloneref(CoreGui2)
 
